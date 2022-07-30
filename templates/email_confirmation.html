@@ -1,0 +1,6 @@
+{% comment %} {% autoescape off %}
+    Welcome to Drowsiness Detection System Login
+    Hello {{name}}
+    Please confirm your email by clicking on the following link:
+    Confirmation Link: http://{{domain}}{% url 'activate' uid64=uid token=token %}
+{% endautoescape %} {% endcomment %}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working of the site</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+    body{
+        font-family: 'Baloo Bhai 2', cursive;
+        background-image: linear-gradient(90deg, rgb(6, 44, 58), red);
+        animation-name: myanim;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-delay: 0s;
+        animation-timing-function: ease-in-out;
+        animation-direction: normal;
+        animation-fill-mode: forwards;
+        color: white;
+    }
+    @keyframes myanim{
+        0%{
+            background-image: linear-gradient(90deg, rgb(6, 44, 58), maroon);
+        }
+        20%{
+            background-image: linear-gradient(90deg, maroon, teal);
+        }
+        40%{
+            background-image: linear-gradient(90deg, teal, mediumvioletred);
+        }
+        60%{
+            background-image: linear-gradient(90deg, mediumvioletred, darkgreen);
+        }
+        80%{
+            background-image: linear-gradient(90deg, darkgreen, hotpink);
+        }
+        100%{
+            background-image: linear-gradient(90deg, hotpink, rgb(6, 44, 58));
+        }
+    }
+    .header button a{
+        text-decoration: none;
+        color: white;
+    }
+    .left{
+        display: inline-block;
+        /* border: 2px solid red; */
+        position: absolute;
+        left: 30px;
+        top: 20px;
+    }
+    .left img{
+        width: 100px;
+        padding: 0px 35px;
+    }
+    .left a div{
+        line-height: 20px;
+        font-size: 18px;
+        width: 200px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+    }
+    .left a div:hover{
+        color: dodgerblue;
+        text-decoration: underline;
+    }
+    .mid{
+        display: block;
+        width: 40%;
+        margin: 35px auto;
+        /* border: 2px solid yellow; */
+    }
+    .right{
+        display: inline-block;
+        /* border: 2px solid green; */
+        position: absolute;
+        right: 34px;
+        top: 35px;
+    }
+    .navbar{
+        display: inline-block;
+    }
+    .navbar li{
+        display: inline-block;
+        font-size: 20px;
+    }
+    .navbar li a{
+        color: white;
+        text-decoration: none;
+        padding: 34px 23px;
+    }
+    .navbar li a:hover, .navbar li a.active{
+        color: dodgerblue;
+        text-decoration: underline;
+    }
+    .btn{
+        font-family: 'Baloo Bhai 2', cursive;
+        margin: 10px 9px;
+        padding: 4px 14px;
+        color:white;
+        background-color: black;
+        border: 2px solid grey;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .btn:hover{
+        background-color: darkolivegreen;
+    }
+    .pics{
+        margin: 100px 35px;
+        display: flex;
+    }
+    .pics #img1{
+        margin: 50px;
+    }
+    .pics #img2{
+        margin: 50px;
+    }
+    .pics #img3{
+        margin: 50px;
+    }
+    .pics #img1 img{
+        height: 100%;
+        margin: 5px 50px;
+        width: 100%;
+    }
+    .pics #img2 img{
+        height: 100%;
+        margin: 5px 50px;
+        width: 100%;
+    }
+    .pics #img3 img{
+        height: 125%;
+        margin: 5px 50px;
+        width: 100%;
+    }
+    .para{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 100px 50px;
+        line-height: 25px;
+    }
+    .flowchart{
+        margin: 0% 27%;
+    }
+</style>
+<body>
+    <header class="header">
+        <!-- Left box for logo  -->
+        <div class="left">
+            <a href="{% url 'index' %}">
+                <img src="static/img/steering-wheel-gf2dccd061_1280.png" alt="">
+                <div>Drowsiness Detection System</div>
+            </a>
+        </div>
+        <!-- Mid box for navbar -->
+        <div class="mid">
+           <ul class="navbar">
+               <li><a href="{% url 'index' %}">Home</a></li>
+               <li><a href="{% url 'working' %}" class="active">Working</a></li>
+               <li><a href="{% url 'statistics' %}">Statistics</a></li>
+           </ul>
+        </div>
+        <!-- Right box for buttons -->
+        <div class="right">
+            <button class="btn"><a href="/profile">{{username}}</a></button>
+            <button class="btn"><a href="/signout">Logout</a></button>
+        </div>
+    </header>
+    <div class="pics">
+        <div id="img1">
+            <img src="static/img/drowsiness1.jpg" alt="error">
+        </div>
+        <div id="img2">
+            <img src="static/img/drowsiness2.jpg" alt="error">
+        </div>
+        <div id="img2">
+            <img src="static/img/dd.jpg" alt="error">
+        </div>
+    </div>
+    <div class="para">
+        <p>
+            The proposed project detects the drowsiness level of the driver while driving the vehicle and raises an alarm to alerts him in case the system finds him drowsy. Such an automated system will help in reducing vehicle accidents. The proposed drowsiness detection system is based on convolutional neural networks which will analyze the facial features of the driver to determine his level of drowsiness.
+        </p>
+        <p>
+            The main challenges are the robustness of the algorithm towards the variation of the human face and real-time processing capability. We can handle the facial variations well using conventional image processing and hand-craft computer vision algorithms. But some variations like facial expression, lighting condition, intra-class variation, and pose variation are additional issues the conventional method failed to address. An alternative solution to conventional methods is Deep Learning which provides better performance by automatically extracting and learning the significant features. Thus, we are using different Convolutional Neural Networks for handling the real-time driver drowsiness detection system. The strategy for this to be used is based on the facial behavior measures which are thoroughly exploited to characterize drowsiness.
+        </p>
+        <p>
+            In this project, we will train various convolutional neural networks over a given dataset. The model is trained using a data set which has many images of people with various features such as closing and opening eyes, with or without glasses, males or females, in the dark or in the light, and many more factors so that when any person is using this system in any condition, if he/she feels drowsy, the model detects the level of drowsiness and alerts the driver by beeping an alarm. Thereafter performance comparison will be done to determine the model with the best performance. The selected model will then be used for the proposed project.
+        </p>
+        <p>
+            Thereafter, the model will use a web camera to capture the driver’s facial features. We also give time parameters as for how much time the eyes get closed, as if for example if a person just blinks eyes, then also eyes get closed for a while, if in that case also the alarm beeps, then it would be irritating for a driver. So, we also have taken into account that for how many seconds the eyes are closed, if it does not open after a certain short period then the alarm beeps and alerts the driver.
+        </p>
+    </div>
+    <div class="flowchart">
+        <img src="static/img/flowchart.png" alt="error">
+    </div>
+</body>
+</html>

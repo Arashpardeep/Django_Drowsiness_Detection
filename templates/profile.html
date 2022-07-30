@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@700&display=swap" rel="stylesheet">
+</head>
+<style>
+    h1{
+        font-size: 7rem;
+        font-family: 'Edu VIC WA NT Beginner', cursive;
+        font-weight: bold;
+        color: white;
+    }
+    h4{
+        font-size: 3rem;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: white;
+    }
+</style>
+<body align = center>
+    <video autoplay loop muted plays-inline style = "position: absolute; right: 0; bottom: 0; z-index: -1">
+        <source src = "static/video.mp4" type = "video/mp4">
+    </video>
+    <img class = "profile-image" src="static/img/images.png" alt="error">
+    <h1>{{username}}</h1>
+    <h4>Name: {{fname}} {{lname}}</h4>
+    <h4>Email: {{email}}</h4>
+</body>
+</html>

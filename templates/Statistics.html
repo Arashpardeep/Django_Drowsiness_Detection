@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['Types of accident involving insured driving', 'Accidents not related to sleepy driving', 'Sleepy driving accidents'],
+          ['head-on collision with oncoming vehicle',  10,      8],
+          ['unintentional road exit',  16,      34],
+          ['intersection accident',  16,      15],
+          ['overtaking accident',  2.5,      3],
+          ['driven into from behind',  2.8,      0.8],
+          ['collision with vehicle in front',  32,      34.3],
+          ['lane change accident',  4,      2.8],
+          ['hitting fixed object(vehicle or other)',  19.5,      12.5],
+        ]);
+
+        var options = {
+          title : 'Road accidents caused by sleepy drivers',
+          vAxis: {title: 'Percentage'},
+          hAxis: {title: 'Type of accident involving insured driver'},
+          seriesType: 'bars',
+          series: {5: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart', 'line']});
+      google.charts.setOnLoadCallback(drawBackgroundColor);
+
+    function drawBackgroundColor() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Polynomial');
+
+      data.addRows([
+        [1.00, 7.0],   [2.00, 13.0],  [3.00, 13.5],  [4.00, 19.00],  [5.00, 22.5],  [6.00, 20.0],
+        [7.00, 13.20],  [8.00, 6.5],  [9.00, 4.0],  [10.00, 2.3],  [11.00, 2.0], [14.00, 2.2],
+        [15.00, 3.5], [17.00, 2.25], [18.00, 1.00], [19.00, 1.1], [20.00, 0.35], [21.00, 0.5],
+        [22.00, 1.5], [23.00, 3.0], [24.00, 6]
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Daily Time'
+        },
+        vAxis: {
+          title: 'Percentage crashes related to sleepiness and fatigue'
+        },
+        backgroundColor: '#f1f8e9'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+      chart.draw(data, options);
+    }
+  </script>
+  <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Cause', 'Accidents'],
+          ['Drink and Drive',     4015],
+          ['Rash Driving',      2535],
+          ['Sleep',  2113],
+          ['Diversion of thoughts', 1162],
+          ['Poor Condition of vehicle',    528],
+          ['Others',    211]
+        ]);
+
+        var options = {
+          title: 'Causes of accidents',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawColChart);
+    function drawColChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Age", "% of drivers that were drowsy", { role: "style" } ],
+        ["15-19", 1.65, "#b87333"],
+        ["20-24", 1.8, "silver"],
+        ["25-29", 1.3, "gold"],
+        ["30-34", 1.05, "deeppink"],
+        ["35-39", 0.75, "green"],
+        ["40-44", 0.8, "violet"],
+        ["45-49", 0.73, "orange"],
+        ["50-54", 0.88, "color: #5832ac"],
+        ["55-59", 0.68, "pink"],
+        ["60-64", 0.6, "color: #342c47"],
+        ["65-69", 1.1, "color: #a7ebc3"],
+        ["70-74", 1.02, "red"],
+        ["75-79", 1.63, "blue"],
+        ["80-84", 1.04, "yellow"],
+        ["85+", 0.15, "lightgreen"],
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        hAxis: {
+          title: 'Age'
+        },
+        vAxis: {
+          title: '% of drivers that were drowsy'
+        },
+        title: "Age of drowsy drivers in crashes",
+        width: 1400,
+        height: 700,
+        bar: {groupWidth: "90%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+  <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawBarColors);
+
+    function drawBarColors() {
+      var data = google.visualization.arrayToDataTable([
+        ['Continent', 'Male', 'Female'],
+        ['Europe', 2.1, 1.2],
+        ['North America', 1.9, 0.6],
+        ['Asia Oceania', 4.3, 6.6],
+        ['Africa', 5.1, 3.5],
+      ]);
+
+      var options = {
+        title: 'Personal Acceptability (Drive when they are so sleepy that they have trouble keeping their eyes open)',
+        chartArea: {width: '50%'},
+        colors: ['#b0120a', '#ffab91'],
+        hAxis: {
+          title: '% acceptability',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Continents'
+        },
+        width: 1400,
+        height: 700,
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('bar_graph'));
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+      body{
+        font-family: 'Baloo Bhai 2', cursive;
+        background-image: linear-gradient(90deg, rgb(6, 44, 58), red);
+        animation-name: myanim;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-delay: 0s;
+        animation-timing-function: ease-in-out;
+        animation-direction: normal;
+        animation-fill-mode: forwards;
+        color: white;
+    }
+    @keyframes myanim{
+        0%{
+            background-image: linear-gradient(90deg, rgb(6, 44, 58), maroon);
+        }
+        20%{
+            background-image: linear-gradient(90deg, maroon, teal);
+        }
+        40%{
+            background-image: linear-gradient(90deg, teal, mediumvioletred);
+        }
+        60%{
+            background-image: linear-gradient(90deg, mediumvioletred, darkgreen);
+        }
+        80%{
+            background-image: linear-gradient(90deg, darkgreen, hotpink);
+        }
+        100%{
+            background-image: linear-gradient(90deg, hotpink, rgb(6, 44, 58));
+        }
+    }
+    .header button a{
+        text-decoration: none;
+        color: white;
+    }
+    .left{
+        display: inline-block;
+        /* border: 2px solid red; */
+        position: absolute;
+        left: 30px;
+        top: 20px;
+    }
+    .left img{
+        width: 100px;
+        padding: 0px 35px;
+    }
+    .left a div{
+      line-height: 20px;
+      font-size: 18px;
+      width: 200px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+  }
+  .left a div:hover{
+      color: dodgerblue;
+      text-decoration: underline;
+  }
+    .mid{
+        display: block;
+        width: 40%;
+        margin: 35px auto;
+        /* border: 2px solid yellow; */
+    }
+    .right{
+        display: inline-block;
+        /* border: 2px solid green; */
+        position: absolute;
+        right: 34px;
+        top: 35px;
+    }
+    .navbar{
+        display: inline-block;
+    }
+    .navbar li{
+        display: inline-block;
+        font-size: 20px;
+    }
+    .navbar li a{
+        color: white;
+        text-decoration: none;
+        padding: 34px 23px;
+    }
+    .navbar li a:hover, .navbar li a.active{
+        color: dodgerblue;
+        text-decoration: underline;
+    }
+    .btn{
+        font-family: 'Baloo Bhai 2', cursive;
+        margin: 10px 9px;
+        padding: 4px 14px;
+        color:white;
+        background-color: black;
+        border: 2px solid grey;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .btn:hover{
+        background-color: darkolivegreen;
+    }
+</style>
+<body>
+    <header class="header">
+        <!-- Left box for logo  -->
+        <div class="left">
+            <a href="{% url 'index' %}">
+                <img src="static/img/steering-wheel-gf2dccd061_1280.png" alt="">
+                <div>Drowsiness Detection System</div>
+            </a>
+        </div>
+        <!-- Mid box for navbar -->
+        <div class="mid">
+           <ul class="navbar">
+               <li><a href="{% url 'index' %}" >Home</a></li>
+               <li><a href="{% url 'working' %}">Working</a></li>
+               <li><a href="{% url 'statistics' %}" class="active">Statistics</a></li>
+           </ul>
+        </div>
+        <!-- Right box for buttons -->
+        <div class="right">
+          <button class="btn"><a href="/profile">{{username}}</a></button>
+          <button class="btn"><a href="/signout">Logout</a></button>
+      </div>
+    </header>
+    <div id="chart_div" style="width: 1400px; height: 700px; margin: 100px 43px"></div>
+     <div id="chart_div2" style="width: 1400px; height: 700px; margin: 70px 45px; margin-top: 0px"></div>
+     <div id="piechart_3d" style="width: 1400px; height: 700px; margin: 70px 45px; margin-top: 0px"></div>
+     <div id="columnchart_values" style="width: 1400px; height: 700px; margin: 70px 45px; margin-top: 0px"></div>
+     <div id="bar_graph" style="width: 1400px; height: 700px; margin: 70px 45px; margin-top: 0px"></div>
+</body>
+</html>
